@@ -1,0 +1,3 @@
+conduit-frontend/.dockerignore
+conduit-backend/.dockerignore
+.gitignore
