@@ -1,2 +1,4 @@
 conduit-frontend/.gitignore
 conduit-backend/.gitignore
+
+.env
