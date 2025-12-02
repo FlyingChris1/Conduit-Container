@@ -5,6 +5,8 @@ services:
     ports:
       - "8000:8000"
     restart: ${RESTART_POLICY}
+    volumes:
+      - backend_data:/app/data        # Persistente Daten (DB/Logs)
 
   frontend:
     image: ${IMAGE_FRONTEND}
@@ -12,3 +14,6 @@ services:
     ports:
       - "8282:80"
     restart: ${RESTART_POLICY}
+
+volumes:
+  backend_data:

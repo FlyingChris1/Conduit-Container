@@ -1,14 +1,19 @@
 
-FROM node:alpine 
+# --- STAGE 1: Build ---
+FROM node:18-alpine AS build
 
-WORKDIR /app 
+WORKDIR /app
 
-COPY package*.json . 
+COPY package*.json ./
+RUN npm install
 
-RUN npm install 
-COPY . . 
+COPY . .
+RUN npx ng build angular-conduit --configuration production
 
-RUN npm run build 
-EXPOSE 80 
+# --- STAGE 2: Run (NGINX) ---
+FROM nginx:alpine
 
-CMD [ "npm", "start" ]
+COPY --from=build /app/dist/angular-conduit /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
