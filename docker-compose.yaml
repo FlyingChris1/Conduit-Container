@@ -1,15 +1,15 @@
 services:
   backend:
-    image: ${IMAGE_BACKEND}
+    build: ./conduit-backend
     container_name: ${CONTAINER_NAME_BACKEND}
     ports:
       - "8000:8000"
     restart: ${RESTART_POLICY}
     volumes:
-      - backend_data:/app/data        # Persistente Daten (DB/Logs)
+      - backend_data:/app/data        
 
   frontend:
-    image: ${IMAGE_FRONTEND}
+    build: ./conduit-frontend
     container_name: ${CONTAINER_NAME_FRONTEND}
     ports:
       - "8282:80"

@@ -1,4 +1,5 @@
 conduit-frontend/.gitignore
 conduit-backend/.gitignore
+src/app/core/interceptors/api.interceptor.ts
 
 .env
