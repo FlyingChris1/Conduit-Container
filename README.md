@@ -21,17 +21,7 @@ This repository contains a fully containerized deployment of the Conduit Applica
 git clone https://github.com/FlyingChris1/Conduit-Container.git
 cd Conduit-Container
 ```
-- Create Docker Image
 
-```bash
-cd conduit-frontend
-docker build -t frontend .
-```
-
-```bash
-cd conduit-backend
-docker build -t backend .
-```
 
 - Convert example.env into .env
 
@@ -43,13 +33,13 @@ cp example.env .env
 - Start Docker compose 
 
 ```bash
-docker compose up -d
+docker compose up --build -d
 ```
 
 - check if your application is up and running
 
 ```bash
-<your_server_ip>:8282
+http://<your_server_ip>:8282
 ```
 
 ## Usage
@@ -72,8 +62,27 @@ docker compose down -v
 docker compose exec -it backend bash
 ```
 
+- Enter Conduit-Frontend Container
+
+```bash
+docker compose exec frontend sh
+```
+
 - Get Docker Compose logs
 
 ```bash
 docker compose logs
+```
+
+- Create an admin Login
+
+```bash
+python manage.py createsuperuser
+```
+
+- Remove Container and boot it up again
+
+```bash
+docker compose down -v
+docker compose up --build -d
 ```
