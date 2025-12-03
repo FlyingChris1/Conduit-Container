@@ -25,10 +25,10 @@ cd Conduit-Container
 
 - Convert example.env into .env
 
+Please change the .env variables before creating the .env, due to security reasons
 ```bash
 cp example.env .env
 ```
-
 
 - Start Docker compose 
 
